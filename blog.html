@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anisur Rahman Shaikot - Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="index.html"> <!-- Link to your main CSS -->
+    <style>
+        /* Basic Blog Page Styles - will be integrated into main CSS or a new file */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
+            color: #e8eaed;
+            overflow-x: hidden;
+            padding-top: 80px; /* Space for fixed header */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header - Reusing styles from index.html */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #e8eaed;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+        /* Blog Content */
+        .blog-section {
+            padding: 5rem 0;
+        }
+
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-post-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .blog-post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .blog-post-card h3 {
+            color: #00d4ff;
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
+        }
+
+        .blog-post-card .post-meta {
+            font-size: 0.9rem;
+            color: #b0b3b8;
+            margin-bottom: 1rem;
+        }
+
+        .blog-post-card p {
+            color: #e8eaed;
+            line-height: 1.6;
+        }
+
+        .blog-post-card a {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #ff0096;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .blog-post-card a:hover {
+            color: #00d4ff;
+        }
+
+        /* Footer - Reusing styles from index.html */
+        footer {
+            background: #0f1419;
+            color: #b0b3b8;
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 3rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">ARS</div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#certifications">Certifications</a></li>
+                <li><a href="index.html#experience">Experience</a></li>
+                <li><a href="index.html#testimonials">Testimonials</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#gallery">Gallery</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="https://credly.com/users/anisur-rahman-shaikot" target="_blank">Credly</a></li>
+                <li><a href="https://www.linkedin.com/in/5haikot/" target="_blank">LinkedIn</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="blog-section">
+        <div class="container">
+            <h2 class="section-title">My Blog</h2>
+            <div class="blog-posts">
+                <div class="blog-post-card">
+                    <h3>The Future of Virtualization: Trends and Predictions</h3>
+                    <p class="post-meta">By Anisur Rahman Shaikot | July 1, 2025</p>
+                    <p>Explore the evolving landscape of virtualization, from containerization to serverless computing, and what it means for IT infrastructure.</p>
+                    <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="blog-post-card">
+                    <h3>Securing Your Network: A Deep Dive into Firewall Management</h3>
+                    <p class="post-meta">By Anisur Rahman Shaikot | June 15, 2025</p>
+                    <p>Best practices for configuring and managing firewalls to protect your enterprise network from modern cyber threats.</p>
+                    <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="blog-post-card">
+                    <h3>DevOps for System Engineers: Bridging the Gap</h3>
+                    <p class="post-meta">By Anisur Rahman Shaikot | May 28, 2025</p>
+                    <p>How System Engineers can leverage DevOps principles and tools to streamline operations and improve collaboration.</p>
+                    <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Anisur Rahman Shaikot. All rights reserved. |
+                <a href="https://credly.com/users/anisur-rahman-shaikot" target="_blank" style="color: inherit; text-decoration: none;">Credly</a> |
+                <a href="https://www.linkedin.com/in/5haikot/" target="_blank" style="color: inherit; text-decoration: none;">LinkedIn</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

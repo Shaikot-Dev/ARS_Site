@@ -6,7 +6,6 @@
     <title>Anisur Rahman Shaikot - System Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        <style>
         * {
             margin: 0;
             padding: 0;
@@ -433,6 +432,48 @@
             color: #00d4ff;
             position: absolute;
             left: 0;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 0;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #b0b3b8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #00d4ff;
+            font-size: 1rem;
         }
 
         /* Projects Section */
@@ -890,11 +931,13 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#experience">Experience</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="https://credly.com/users/anisur-rahman-shaikot" target="_blank">Credly</a></li>
                 <li><a href="https://www.linkedin.com/in/5haikot/" target="_blank">LinkedIn</a></li>
+                <li><a href="blog.html">Blog</a></li>
             </ul>
         </nav>
     </header>
@@ -1141,6 +1184,22 @@
                             <li>Customer service provisioning and support</li>
                         </ul>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What People Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Anisur is an exceptionally dedicated and skilled System Engineer. His expertise in VMware and Nutanix is truly impressive, and he consistently delivers high-quality solutions. A valuable asset to any team!"</p>
+                    <p class="testimonial-author">- MD. Nasir Uddin Sikder, Senior Manager, Pluang</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I've had the pleasure of working with Anisur on several complex projects. His problem-solving abilities and deep understanding of IT infrastructure are outstanding. He's a reliable and highly capable professional."</p>
+                    <p class="testimonial-author">- Sadman Shishir Sakib, Senior Engineer, Smart Technologies BD LTD</p>
                 </div>
             </div>
         </div>
