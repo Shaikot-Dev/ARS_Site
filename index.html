@@ -196,6 +196,22 @@
         .about-content {
             max-width: 800px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 2rem;
+            border: 4px solid #00d4ff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .about-text {
             text-align: center;
         }
 
@@ -427,6 +443,45 @@
             margin-bottom: 1rem;
         }
 
+        /* Image Gallery Section */
+        .gallery {
+            padding: 5rem 0;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px; /* Fixed height for consistency */
+            object-fit: cover; /* Cover the area, cropping if necessary */
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+
         /* Education Section */
         .education {
             padding: 5rem 0;
@@ -480,6 +535,60 @@
             margin-top: 2rem;
         }
 
+        .contact-form {
+            margin-top: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .contact-form h3 {
+            color: #00d4ff;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            color: #e8eaed;
+            font-size: 1rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: #b0b3b8;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.3);
+        }
+
+        .contact-form button {
+            width: auto;
+            align-self: center;
+            margin-top: 1rem;
+        }
+
         .contact-link {
             display: flex;
             align-items: center;
@@ -496,6 +605,66 @@
             background: rgba(0, 212, 255, 0.1);
             border-color: #00d4ff;
             color: #00d4ff;
+        }
+
+        .contact-address {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            font-size: 1.1rem;
+            color: #e8eaed;
+        }
+
+        .references {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .references h3 {
+            color: #00d4ff;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .reference-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .reference-item {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .reference-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
+        }
+
+        .reference-item strong {
+            display: block;
+            color: #e8eaed;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .reference-item span {
+            color: #b0b3b8;
+            font-size: 0.95rem;
         }
 
         /* Animations */
@@ -535,6 +704,20 @@
                 align-items: center;
             }
         }
+
+        /* Footer */
+        footer {
+            background: #0f1419;
+            color: #b0b3b8;
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 3rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -548,6 +731,7 @@
                 <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -590,9 +774,10 @@
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
+                <img src="images/my_image.jpg" alt="Anisur Rahman Shaikot" class="about-image">
                 <div class="about-text">
                     <h3>Career Objective</h3>
-                    <p>A highly skilled and certified System Engineer with more than two years of experience in IT infrastructure, VMware, Nutanix, and enterprise networking. I am passionate about delivering reliable system engineering solutions and currently seeking opportunities in Japan.</p>
+                    <p>A highly skilled and certified System Engineer with more than three years of experience in IT infrastructure, VMware, Nutanix, and enterprise networking. I am passionate about delivering reliable system engineering solutions and seeking global opportunities.</p>
                     
                     <div class="about-details">
                         <div class="detail-item">
@@ -714,6 +899,25 @@
                                 <h4>Cybersecurity Essentials</h4>
                             </div>
                         </div>
+                        <div class="cert-item">
+                            <div class="cert-badge">📚</div>
+                            <div class="cert-info">
+                                <h4>DevOps Fundamentals</h4>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-badge">📚</div>
+                            <div class="cert-info">
+                                <h4>Advanced System Engineering</h4>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-badge">📚</div>
+                            <div class="cert-info">
+                                <h4>Firewall Management & Security</h4>
+                            </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -775,6 +979,32 @@
         </div>
     </section>
 
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Image Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/gallery-placeholder-1.jpg" alt="Gallery Image 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery-placeholder-2.jpg" alt="Gallery Image 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery-placeholder-3.jpg" alt="Gallery Image 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery-placeholder-4.jpg" alt="Gallery Image 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery-placeholder-5.jpg" alt="Gallery Image 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery-placeholder-6.jpg" alt="Gallery Image 6">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="education" class="education">
         <div class="container">
             <h2 class="section-title">Education</h2>
@@ -831,6 +1061,17 @@
                 </div>
             </div>
             
+            <div class="contact-form">
+                <h3>Send a Message</h3>
+                <form action="mailto:Shaikot676@gmail.com" method="post" enctype="text/plain">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="text" name="subject" placeholder="Subject" required>
+                    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="cta-button primary">Send Message</button>
+                </form>
+            </div>
+
             <div class="references">
                 <h3>References</h3>
                 <div class="reference-list">
@@ -845,20 +1086,14 @@
                 </div>
             </div>
         </div>
-                    <span>📧</span>
-                    <span>alex.chen@example.com</span>
-                </a>
-                <a href="https://linkedin.com/in/alexchen" class="contact-link">
-                    <span>💼</span>
-                    <span>LinkedIn</span>
-                </a>
-                <a href="https://github.com/alexchen" class="contact-link">
-                    <span>🔗</span>
-                    <span>GitHub</span>
-                </a>
-            </div>
-        </div>
+                    </div>
     </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Anisur Rahman Shaikot. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
         // Smooth scrolling for navigation links
