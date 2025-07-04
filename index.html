@@ -980,7 +980,7 @@
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
-                <img src="images/my_image.jpg" alt="Anisur Rahman Shaikot" class="about-image">
+                <img src="images/my_image.jpg" alt="Anisur Rahman Shaikot" class="about-image" id="about-me-image">
                 <div class="about-text">
                     <h3>Career Objective</h3>
                     <p>A highly skilled and certified System Engineer with more than three years of experience in IT infrastructure, VMware, Nutanix, and enterprise networking. I am passionate about delivering reliable system engineering solutions and seeking global opportunities.</p>
@@ -1486,6 +1486,7 @@
         const lightboxModal = document.getElementById('lightbox-modal');
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxClose = document.querySelector('.lightbox-close');
+        const aboutMeImage = document.getElementById('about-me-image');
 
         document.querySelectorAll('.gallery-item img').forEach(image => {
             image.addEventListener('click', function() {
@@ -1493,6 +1494,13 @@
                 lightboxImg.src = this.src;
             });
         });
+
+        if (aboutMeImage) {
+            aboutMeImage.addEventListener('click', function() {
+                lightboxModal.style.display = 'block';
+                lightboxImg.src = this.src;
+            });
+        }
 
         lightboxClose.addEventListener('click', function() {
             lightboxModal.style.display = 'none';
