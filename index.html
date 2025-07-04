@@ -74,6 +74,15 @@
             overflow: hidden;
         }
 
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%); /* Ensure background is set */
+        }
+
         .hero::before {
             content: '';
             position: absolute;
@@ -83,8 +92,47 @@
             height: 100%;
             background: 
                 radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 0, 150, 0.1) 0%, transparent 50%);
+                radial_gradient(circle at 80% 20%, rgba(255, 0, 150, 0.1) 0%, transparent 50%);
             z-index: -1;
+        }
+
+        .animated-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0; /* Behind hero-content */
+        }
+
+        .animated-background i {
+            position: absolute;
+            color: rgba(0, 212, 255, 0.1); /* Light blue, semi-transparent */
+            font-size: 30px; /* Base size */
+            animation: floatAndFade 15s infinite ease-in-out;
+            pointer-events: none; /* Allow clicks to pass through */
+        }
+
+        @keyframes floatAndFade {
+            0% {
+                transform: translateY(0) translateX(0) scale(1);
+                opacity: 0;
+            }
+            25% {
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-100px) translateX(50px) scale(1.2);
+                opacity: 0.8;
+            }
+            75% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-200px) translateX(100px) scale(0.8);
+                opacity: 0;
+            }
         }
 
         .hero-content {
@@ -943,6 +991,7 @@
     </header>
 
     <section id="home" class="hero">
+        <div class="animated-background"></div>
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
@@ -1511,6 +1560,49 @@
                 lightboxModal.style.display = 'none';
             }
         });
+
+        // Animated Background for Hero Section
+        const animatedBackground = document.querySelector('.animated-background');
+        const icons = [
+            'fas fa-router',
+            'fas fa-ethernet', // Represents a switch
+            'fas fa-server',
+            'fas fa-desktop',
+            'fas fa-firewall', // Assuming a firewall icon exists or using a generic security icon
+            'fas fa-laptop',
+            'fas fa-hdd',
+            'fas fa-microchip',
+            'fas fa-cloud',
+            'fas fa-database'
+        ];
+
+        function createAnimatedIcon() {
+            const iconElement = document.createElement('i');
+            iconElement.className = icons[Math.floor(Math.random() * icons.length)];
+            
+            const size = Math.random() * 20 + 20; // Size between 20px and 40px
+            iconElement.style.fontSize = size + 'px';
+            iconElement.style.left = Math.random() * 100 + '%';
+            iconElement.style.top = Math.random() * 100 + '%';
+            iconElement.style.animationDuration = Math.random() * 10 + 10 + 's'; // 10-20s
+            iconElement.style.animationDelay = Math.random() * 5 + 's'; // 0-5s delay
+            iconElement.style.opacity = 0; // Start invisible
+
+            animatedBackground.appendChild(iconElement);
+
+            // Remove icon after animation to prevent DOM bloat
+            iconElement.addEventListener('animationend', () => {
+                iconElement.remove();
+            });
+        }
+
+        // Create initial icons
+        for (let i = 0; i < 30; i++) {
+            createAnimatedIcon();
+        }
+
+        // Continuously add new icons
+        setInterval(createAnimatedIcon, 1000); // Add a new icon every 1 second
     </script>
 </body>
 </html>
