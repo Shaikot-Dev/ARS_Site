@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anisur Rahman Shaikot - System Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
+            color: #e8eaed;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #e8eaed;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 150, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00d4ff, #ff0096);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #b0b3b8;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #00d4ff, #ff0096);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero-text .title {
+            font-size: 1.3rem;
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            animation: fadeInUp 1s ease-out 0.1s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-button.primary {
+            background: linear-gradient(45deg, #00d4ff, #ff0096);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid #00d4ff;
+            color: #00d4ff;
+        }
+
+        .cta-button.secondary:hover {
+            background: #00d4ff;
+            color: #0f1419;
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 400px;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            position: absolute;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .code-block:nth-child(1) {
+            top: 20px;
+            left: 20px;
+            animation-delay: 0s;
+        }
+
+        .code-block:nth-child(2) {
+            top: 120px;
+            right: 20px;
+            animation-delay: 1s;
+        }
+
+        .code-block:nth-child(3) {
+            bottom: 20px;
+            left: 50px;
+            animation-delay: 2s;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text h3 {
+            color: #00d4ff;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #b0b3b8;
+            margin-bottom: 2rem;
+        }
+
+        .about-details {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #e8eaed;
+        }
+
+        .detail-item strong {
+            color: #00d4ff;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 5rem 0;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #00d4ff;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 1rem;
+            color: #e8eaed;
+        }
+
+        .skill-card p {
+            color: #b0b3b8;
+        }
+
+        /* Certifications Section */
+        .certifications {
+            padding: 5rem 0;
+        }
+
+        .cert-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .cert-category h3 {
+            color: #00d4ff;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .cert-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .cert-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .cert-item:hover {
+            transform: translateX(5px);
+            border-color: #00d4ff;
+        }
+
+        .cert-badge {
+            font-size: 1.5rem;
+            min-width: 40px;
+        }
+
+        .cert-info h4 {
+            color: #e8eaed;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        /* Experience Section */
+        .experience {
+            padding: 5rem 0;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .experience-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .experience-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .experience-date {
+            color: #00d4ff;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .experience-content h3 {
+            color: #e8eaed;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .experience-content h4 {
+            color: #ff0096;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .experience-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .experience-content li {
+            color: #b0b3b8;
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .experience-content li::before {
+            content: '▸';
+            color: #00d4ff;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 5rem 0;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(255, 0, 150, 0.2);
+        }
+
+        .project-tag {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Education Section */
+        .education {
+            padding: 5rem 0;
+        }
+
+        .education-list {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .education-item {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .education-year {
+            color: #00d4ff;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .education-content h3 {
+            color: #e8eaed;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .education-content h4 {
+            color: #b0b3b8;
+            font-size: 1rem;
+            font-weight: normal;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background: rgba(255, 255, 255, 0.02);
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #e8eaed;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: #00d4ff;
+            color: #00d4ff;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">ARS</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Anisur Rahman Shaikot</h1>
+                    <div class="title">System Engineer | Virtualization Specialist | Network Engineer</div>
+                    <p>Delivering optimized virtualization, cloud, and enterprise network solutions for a smarter tomorrow.</p>
+                    <div class="cta-buttons">
+                        <a href="#projects" class="cta-button primary">View Portfolio</a>
+                        <a href="#contact" class="cta-button secondary">Contact Me</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="code-block">
+                        <div>$ esxcli system version get</div>
+                        <div style="color: #00d4ff;">VMware ESXi 8.0.2</div>
+                        <div style="color: #4ade80;">✓ vSphere Ready</div>
+                    </div>
+                    <div class="code-block">
+                        <div>nutanix@cvm$ ncli cluster status</div>
+                        <div style="color: #4ade80;">Cluster Status: UP</div>
+                        <div style="color: #00d4ff;">AHV: Operational</div>
+                    </div>
+                    <div class="code-block">
+                        <div>cisco# show ip route</div>
+                        <div style="color: #4ade80;">✓ BGP Neighbors Active</div>
+                        <div>Network: Optimized</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Career Objective</h3>
+                    <p>A highly skilled and certified System Engineer with more than two years of experience in IT infrastructure, VMware, Nutanix, and enterprise networking. I am passionate about delivering reliable system engineering solutions and currently seeking opportunities in Japan.</p>
+                    
+                    <div class="about-details">
+                        <div class="detail-item">
+                            <strong>📍 Location:</strong>
+                            <span>Dhaka, Bangladesh</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>🌐 Languages:</strong>
+                            <span>English (Fluent), Bangla (Native)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">🖥️</div>
+                    <h3>Virtualization</h3>
+                    <p>VMware (vSphere, vSAN, NSX, VCF), Nutanix (AHV, Prism) - Expert-level virtualization solutions and hyperconverged infrastructure management.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🌐</div>
+                    <h3>Networking</h3>
+                    <p>Cisco, Aruba, Fortinet, pfSense, OPNsense, MikroTik, ISP-FTTx - Comprehensive enterprise networking and security solutions.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">⚙️</div>
+                    <h3>System & Infrastructure</h3>
+                    <p>System Administration, Cloud Computing & Data Center, Infrastructure Design - Building scalable and reliable IT infrastructure.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">💾</div>
+                    <h3>Backup & Disaster Recovery</h3>
+                    <p>Comprehensive backup solutions, disaster recovery planning, and business continuity strategies for enterprise environments.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🛠️</div>
+                    <h3>IT Support & Troubleshooting</h3>
+                    <p>Advanced problem diagnosis, performance optimization, and technical support for complex IT environments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div class="cert-categories">
+                <div class="cert-category">
+                    <h3>Professional Certifications</h3>
+                    <div class="cert-list">
+                        <div class="cert-item">
+                            <div class="cert-badge">🏅</div>
+                            <div class="cert-info">
+                                <h4>VMware Certified Professional – Data Center Virtualization (VCP-DCV)</h4>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-badge">🏅</div>
+                            <div class="cert-info">
+                                <h4>VMware Certified Professional – Network Virtualization (VCP-NV)</h4>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-badge">🏅</div>
+                            <div class="cert-info">
+                                <h4>Nutanix Certified Associate (NCA)</h4>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-badge">🏅</div>
+                            <div class="cert-info">
+                                <h4>Nutanix Certified Professional – Multicloud Infrastructure (NCP-MCI)</h4>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-badge">🏅</div>
+                            <div class="cert-info">
+                                <h4>Nutanix Certified Professional – Multicloud Automation (NCP-MA)</h4>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-badge">🏅</div>
+                            <div class="cert-info">
+                                <h4>Nutanix Certified Sales Expert – Core (NCSE-Core)</h4>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-badge">🏅</div>
+                            <div class="cert-info">
+                                <h4>Nutanix Certified Systems Engineer – Core (NCS-Core)</h4>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-badge">🏅</div>
+                            <div class="cert-info">
+                                <h4>Nutanix Certified Systems Engineer – Cloud Integration (NCP-CI)</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cert-category">
+                    <h3>Training & Development</h3>
+                    <div class="cert-list">
+                        <div class="cert-item">
+                            <div class="cert-badge">📚</div>
+                            <div class="cert-info">
+                                <h4>Cisco Certified Network Associate (CCNA)</h4>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-badge">📚</div>
+                            <div class="cert-info">
+                                <h4>Cybersecurity Essentials</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <div class="experience-date">May 2022 – Present</div>
+                    <div class="experience-content">
+                        <h3>System Engineer</h3>
+                        <h4>Smart Technologies (BD) LTD.</h4>
+                        <ul>
+                            <li>VMware and Nutanix solution design and deployment</li>
+                            <li>IT systems troubleshooting and support</li>
+                            <li>Enterprise networking (LAN, WAN, VPN)</li>
+                            <li>System upgrades, performance tuning, disaster recovery planning</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-date">Jan 2021 – April 2022</div>
+                    <div class="experience-content">
+                        <h3>Junior Network Engineer</h3>
+                        <h4>SSRM Internet (ISP)</h4>
+                        <ul>
+                            <li>ISP network infrastructure configuration</li>
+                            <li>Network performance monitoring and troubleshooting</li>
+                            <li>Customer service provisioning and support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-tag">VMware VCF</div>
+                    <div class="project-tag">NSX</div>
+                    <div class="project-tag">SRM</div>
+                    <h3>VCF Design and Implementation for Nagad Mobile Banking</h3>
+                    <p>Designed and implemented VMware Cloud Foundation deployment with NSX micro-segmentation, successful workload migration, and VMware SRM disaster recovery solution for Bangladesh's leading mobile banking platform.</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-tag">Nutanix AHV</div>
+                    <div class="project-tag">HCI</div>
+                    <div class="project-tag">Migration</div>
+                    <h3>Nutanix HCI Solution for Midland Bank PLC</h3>
+                    <p>Successfully deployed Nutanix AHV hyperconverged infrastructure, managed complex workload migration, implemented comprehensive data protection and backup strategies, and provided extensive IT team training.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-list">
+                <div class="education-item">
+                    <div class="education-year">2019</div>
+                    <div class="education-content">
+                        <h3>B.Sc. in Computer Science & Engineering</h3>
+                        <h4>Institute of Science & Technology, Bangladesh</h4>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="education-year">2015</div>
+                    <div class="education-content">
+                        <h3>Higher Secondary Certificate</h3>
+                        <h4>Nawab Habibullah Model School & College</h4>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="education-year">2013</div>
+                    <div class="education-content">
+                        <h3>Secondary School Certificate</h3>
+                        <h4>Nawab Habibullah Model School & College</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Information</h2>
+            <p>Ready to discuss virtualization, networking, or system engineering opportunities.</p>
+            <div class="contact-grid">
+                <div class="contact-links">
+                    <a href="tel:+8801621306991" class="contact-link">
+                        <span>📞</span>
+                        <span>+8801621306991</span>
+                    </a>
+                    <a href="mailto:Shaikot676@gmail.com" class="contact-link">
+                        <span>📧</span>
+                        <span>Shaikot676@gmail.com</span>
+                    </a>
+                    <a href="https://credly.com/users/anisur-rahman-shaikot" class="contact-link" target="_blank">
+                        <span>🏆</span>
+                        <span>Credly Profile</span>
+                    </a>
+                </div>
+                <div class="contact-address">
+                    <div class="address-item">
+                        <span>🏠</span>
+                        <span>263/1 Helal Market, Uttar Khan, Dhaka-1230, Bangladesh</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="references">
+                <h3>References</h3>
+                <div class="reference-list">
+                    <div class="reference-item">
+                        <strong>MD. Nasir Uddin Sikder</strong>
+                        <span>Senior Manager, Pluang</span>
+                    </div>
+                    <div class="reference-item">
+                        <strong>Sadman Shishir Sakib</strong>
+                        <span>Senior Engineer, Smart Technologies BD LTD</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+                    <span>📧</span>
+                    <span>alex.chen@example.com</span>
+                </a>
+                <a href="https://linkedin.com/in/alexchen" class="contact-link">
+                    <span>💼</span>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/alexchen" class="contact-link">
+                    <span>🔗</span>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(15, 20, 25, 0.98)';
+            } else {
+                header.style.background = 'rgba(15, 20, 25, 0.95)';
+            }
+        });
+
+        // Animate skill cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-card, .project-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
