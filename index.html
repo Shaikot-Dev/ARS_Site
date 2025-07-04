@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anisur Rahman Shaikot - System Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        <style>
         * {
             margin: 0;
             padding: 0;
@@ -294,6 +296,33 @@
 
         .skill-card p {
             color: #b0b3b8;
+            margin-bottom: 1rem;
+        }
+
+        .skill-bar-container {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            height: 10px;
+            margin-top: 1rem;
+            position: relative;
+        }
+
+        .skill-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #ff0096);
+            border-radius: 5px;
+            width: 0%; /* Will be set by JS */
+            transition: width 1s ease-out;
+        }
+
+        .skill-percentage {
+            position: absolute;
+            right: 0;
+            top: -20px;
+            font-size: 0.8rem;
+            color: #00d4ff;
+            font-weight: bold;
         }
 
         /* Certifications Section */
@@ -800,6 +829,53 @@
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* Lightbox Styles */
+        .lightbox-modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 2000; /* Sit on top of everything */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+            backdrop-filter: blur(8px);
+        }
+
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .lightbox-close:hover,
+        .lightbox-close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @keyframes zoom {
+            from {transform: scale(0.1); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
     </style>
 </head>
 <body>
@@ -866,11 +942,11 @@
                     
                     <div class="about-details">
                         <div class="detail-item">
-                            <strong>📍 Location:</strong>
+                            <strong><i class="fas fa-map-marker-alt"></i> Location:</strong>
                             <span>Dhaka, Bangladesh</span>
                         </div>
                         <div class="detail-item">
-                            <strong>🌐 Languages:</strong>
+                            <strong><i class="fas fa-globe"></i> Languages:</strong>
                             <span>English (Fluent), Bangla (Native)</span>
                         </div>
                     </div>
@@ -883,30 +959,50 @@
         <div class="container">
             <h2 class="section-title">Technical Skills</h2>
             <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon">🖥️</div>
+                <div class="skill-card" data-proficiency="90">
+                    <div class="skill-icon"><i class="fas fa-server"></i></div>
                     <h3>Virtualization</h3>
                     <p>VMware (vSphere, vSAN, NSX, VCF), Nutanix (AHV, Prism) - Expert-level virtualization solutions and hyperconverged infrastructure management.</p>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar"></div>
+                        <span class="skill-percentage">90%</span>
+                    </div>
                 </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🌐</div>
+                <div class="skill-card" data-proficiency="85">
+                    <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
                     <h3>Networking</h3>
                     <p>Cisco, Aruba, Fortinet, pfSense, OPNsense, MikroTik, ISP-FTTx - Comprehensive enterprise networking and security solutions.</p>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar"></div>
+                        <span class="skill-percentage">85%</span>
+                    </div>
                 </div>
-                <div class="skill-card">
-                    <div class="skill-icon">⚙️</div>
+                <div class="skill-card" data-proficiency="80">
+                    <div class="skill-icon"><i class="fas fa-cogs"></i></div>
                     <h3>System & Infrastructure</h3>
                     <p>System Administration, Cloud Computing & Data Center, Infrastructure Design - Building scalable and reliable IT infrastructure.</p>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar"></div>
+                        <span class="skill-percentage">80%</span>
+                    </div>
                 </div>
-                <div class="skill-card">
-                    <div class="skill-icon">💾</div>
+                <div class="skill-card" data-proficiency="75">
+                    <div class="skill-icon"><i class="fas fa-database"></i></div>
                     <h3>Backup & Disaster Recovery</h3>
                     <p>Comprehensive backup solutions, disaster recovery planning, and business continuity strategies for enterprise environments.</p>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar"></div>
+                        <span class="skill-percentage">75%</span>
+                    </div>
                 </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🛠️</div>
+                <div class="skill-card" data-proficiency="95">
+                    <div class="skill-icon"><i class="fas fa-tools"></i></div>
                     <h3>IT Support & Troubleshooting</h3>
                     <p>Advanced problem diagnosis, performance optimization, and technical support for complex IT environments.</p>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar"></div>
+                        <span class="skill-percentage">95%</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -920,55 +1016,55 @@
                     <h3>Professional Certifications</h3>
                     <div class="cert-list">
                         <div class="cert-item">
-                            <div class="cert-badge">🏅</div>
+                            <div class="cert-badge"><i class="fas fa-award"></i></div>
                             <div class="cert-info">
                                 <h4>VMware Certified Professional – Data Center Virtualization (VCP-DCV)</h4>
                             </div>
                         </div>
                         <div class="cert-item">
-                            <div class="cert-badge">🏅</div>
+                            <div class="cert-badge"><i class="fas fa-award"></i></div>
                             <div class="cert-info">
                                 <h4>VMware Certified Professional – Network Virtualization (VCP-NV)</h4>
                             </div>
                         </div>
                         <div class="cert-item">
-                            <div class="cert-badge">🏅</div>
+                            <div class="cert-badge"><i class="fas fa-award"></i></div>
                             <div class="cert-info">
                                 <h4>Nutanix Certified Associate (NCA)</h4>
                             </div>
                         </div>
                         <div class="cert-item">
-                            <div class="cert-badge">🏅</div>
+                            <div class="cert-badge"><i class="fas fa-award"></i></div>
                             <div class="cert-info">
                                 <h4>Nutanix Certified Professional – Multicloud Infrastructure (NCP-MCI)</h4>
                             </div>
                         </div>
                         <div class="cert-item">
-                            <div class="cert-badge">🏅</div>
+                            <div class="cert-badge"><i class="fas fa-award"></i></div>
                             <div class="cert-info">
                                 <h4>Nutanix Certified Professional – Multicloud Automation (NCP-MA)</h4>
                             </div>
                         </div>
                         <div class="cert-item">
-                            <div class="cert-badge">🏅</div>
+                            <div class="cert-badge"><i class="fas fa-award"></i></div>
                             <div class="cert-info">
                                 <h4>Nutanix Certified Sales Expert – Core (NCSE-Core)</h4>
                             </div>
                         </div>
                         <div class="cert-item">
-                            <div class="cert-badge">🏅</div>
+                            <div class="cert-badge"><i class="fas fa-award"></i></div>
                             <div class="cert-info">
                                 <h4>Nutanix Certified Systems Engineer – Core (NCS-Core)</h4>
                             </div>
                         </div>
                         <div class="cert-item">
-                            <div class="cert-badge">🏅</div>
+                            <div class="cert-badge"><i class="fas fa-award"></i></div>
                             <div class="cert-info">
                                 <h4>Nutanix Certified Systems Engineer – Cloud Integration (NCP-CI)</h4>
                             </div>
                         </div>
                         <div class="cert-item">
-                            <div class="cert-badge">🔗</div>
+                            <div class="cert-badge"><i class="fas fa-link"></i></div>
                             <div class="cert-info">
                                 <h4><a href="https://credly.com/users/anisur-rahman-shaikot" target="_blank" style="color: inherit; text-decoration: none;">View Credly Profile</a></h4>
                             </div>
@@ -979,31 +1075,31 @@
                     <h3>Training & Development</h3>
                     <div class="cert-list">
                         <div class="cert-item">
-                            <div class="cert-badge">📚</div>
+                            <div class="cert-badge"><i class="fas fa-book-open"></i></div>
                             <div class="cert-info">
                                 <h4>Cisco Certified Network Associate (CCNA)</h4>
                             </div>
                         </div>
                         <div class="cert-item">
-                            <div class="cert-badge">📚</div>
+                            <div class="cert-badge"><i class="fas fa-book-open"></i></div>
                             <div class="cert-info">
                                 <h4>Cybersecurity Essentials</h4>
                             </div>
                         </div>
                         <div class="cert-item">
-                            <div class="cert-badge">📚</div>
+                            <div class="cert-badge"><i class="fas fa-book-open"></i></div>
                             <div class="cert-info">
                                 <h4>DevOps Fundamentals</h4>
                             </div>
                         </div>
                         <div class="cert-item">
-                            <div class="cert-badge">📚</div>
+                            <div class="cert-badge"><i class="fas fa-book-open"></i></div>
                             <div class="cert-info">
                                 <h4>Advanced System Engineering</h4>
                             </div>
                         </div>
                         <div class="cert-item">
-                            <div class="cert-badge">📚</div>
+                            <div class="cert-badge"><i class="fas fa-book-open"></i></div>
                             <div class="cert-info">
                                 <h4>Firewall Management & Security</h4>
                             </div>
@@ -1144,25 +1240,25 @@
             <div class="contact-grid">
                 <div class="contact-links">
                     <a href="tel:+8801621306991" class="contact-link">
-                        <span>📞</span>
+                        <span><i class="fas fa-phone"></i></span>
                         <span>+8801621306991</span>
                     </a>
                     <a href="mailto:Shaikot676@gmail.com" class="contact-link">
-                        <span>📧</span>
+                        <span><i class="fas fa-envelope"></i></span>
                         <span>Shaikot676@gmail.com</span>
                     </a>
                     <a href="https://credly.com/users/anisur-rahman-shaikot" class="contact-link" target="_blank">
-                        <span>🏆</span>
+                        <span><i class="fas fa-award"></i></span>
                         <span>Credly Profile</span>
                     </a>
                     <a href="https://www.linkedin.com/in/5haikot/" class="contact-link" target="_blank">
-                        <span>💼</span>
+                        <span><i class="fab fa-linkedin"></i></span>
                         <span>LinkedIn Profile</span>
                     </a>
                 </div>
                 <div class="contact-address">
                     <div class="address-item">
-                        <span>🏠</span>
+                        <span><i class="fas fa-home"></i></span>
                         <span>263/1 Helal Market, Uttar Khan, Dhaka-1230, Bangladesh</span>
                     </div>
                 </div>
@@ -1213,6 +1309,11 @@
         </div>
     </div>
 
+    <div id="lightbox-modal" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
     <footer>
         <div class="container">
             <p>&copy; 2025 Anisur Rahman Shaikot. All rights reserved. |
@@ -1261,8 +1362,19 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.skill-card, .project-card').forEach(card => {
+        document.querySelectorAll('.skill-card, .project-card, section').forEach(card => {
             observer.observe(card);
+        });
+
+        // Skill Bar Animation
+        document.querySelectorAll('.skill-card').forEach(skillCard => {
+            const proficiency = skillCard.dataset.proficiency;
+            const skillBar = skillCard.querySelector('.skill-bar');
+            const skillPercentage = skillCard.querySelector('.skill-percentage');
+
+            // Animate the bar width
+            skillBar.style.width = proficiency + '%';
+            skillPercentage.textContent = proficiency + '%';
         });
 
         // Project Modal Logic
@@ -1306,6 +1418,28 @@
         window.addEventListener('click', function(event) {
             if (event.target == projectModal) {
                 projectModal.style.display = 'none';
+            }
+        });
+
+        // Lightbox Logic
+        const lightboxModal = document.getElementById('lightbox-modal');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.querySelector('.lightbox-close');
+
+        document.querySelectorAll('.gallery-item img').forEach(image => {
+            image.addEventListener('click', function() {
+                lightboxModal.style.display = 'block';
+                lightboxImg.src = this.src;
+            });
+        });
+
+        lightboxClose.addEventListener('click', function() {
+            lightboxModal.style.display = 'none';
+        });
+
+        lightboxModal.addEventListener('click', function(event) {
+            if (event.target == lightboxModal) {
+                lightboxModal.style.display = 'none';
             }
         });
     </script>
