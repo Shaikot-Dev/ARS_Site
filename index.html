@@ -718,6 +718,88 @@
         footer p {
             font-size: 0.9rem;
         }
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1001; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+            backdrop-filter: blur(5px);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #1a1f2e;
+            margin: 5% auto; /* 15% from the top and centered */
+            padding: 30px;
+            border: 1px solid #00d4ff;
+            border-radius: 15px;
+            width: 80%; /* Could be more or less, depending on screen size */
+            max-width: 900px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            animation: fadeIn 0.5s;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #00d4ff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-body p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            color: #b0b3b8;
+        }
+
+        .modal-body strong {
+            color: #00d4ff;
+        }
+
+        .modal-body h2 {
+            color: #e8eaed;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .modal-body #modal-screenshots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .modal-body #modal-screenshots img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
@@ -969,14 +1051,26 @@
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
-                <div class="project-card">
+                <div class="project-card"
+                    data-problem="Designed and implemented VMware Cloud Foundation deployment with NSX micro-segmentation, successful workload migration, and VMware SRM disaster recovery solution for Bangladesh's leading mobile banking platform."
+                    data-role="Lead System Engineer, responsible for end-to-end solution design, deployment, and post-implementation support."
+                    data-solution="Implemented VMware Cloud Foundation (VCF) to create a robust, scalable, and secure private cloud environment. Utilized NSX for micro-segmentation to enhance security and VMware SRM for automated disaster recovery, ensuring business continuity."
+                    data-technologies="VMware vSphere, vSAN, NSX-T, SRM, VCF"
+                    data-impact="Achieved 99.99% uptime for critical banking applications, reduced recovery time objective (RTO) by 80%, and improved network security posture through granular micro-segmentation."
+                    data-screenshots="images/nagad-vcf-1.png, images/nagad-vcf-2.png">
                     <div class="project-tag">VMware VCF</div>
                     <div class="project-tag">NSX</div>
                     <div class="project-tag">SRM</div>
                     <h3>VCF Design and Implementation for Nagad Mobile Banking</h3>
                     <p>Designed and implemented VMware Cloud Foundation deployment with NSX micro-segmentation, successful workload migration, and VMware SRM disaster recovery solution for Bangladesh's leading mobile banking platform.</p>
                 </div>
-                <div class="project-card">
+                <div class="project-card"
+                    data-problem="Midland Bank PLC required a robust, scalable, and easy-to-manage hyperconverged infrastructure solution to replace their aging IT systems and support future growth."
+                    data-role="System Engineer, responsible for deployment, configuration, data migration, and training."
+                    data-solution="Deployed Nutanix AHV hyperconverged infrastructure, consolidating compute, storage, and networking into a single, unified platform. Managed complex workload migration from legacy systems and implemented comprehensive data protection strategies."
+                    data-technologies="Nutanix AHV, Prism Element, Prism Central, Nutanix Move, Nutanix Files"
+                    data-impact="Reduced operational overhead by 40%, improved application performance by 25%, and provided a highly available and resilient infrastructure for critical banking operations. Successfully trained the internal IT team on Nutanix platform management."
+                    data-screenshots="images/midland-nutanix-1.png, images/midland-nutanix-2.png">
                     <div class="project-tag">Nutanix AHV</div>
                     <div class="project-tag">HCI</div>
                     <div class="project-tag">Migration</div>
@@ -1101,6 +1195,23 @@
                     </div>
     </section>
 
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="modal-title"></h2>
+            <div class="modal-body">
+                <p><strong>Problem:</strong> <span id="modal-problem"></span></p>
+                <p><strong>My Role:</strong> <span id="modal-role"></span></p>
+                <p><strong>Solution:</strong> <span id="modal-solution"></span></p>
+                <p><strong>Technologies Used:</strong> <span id="modal-tech"></span></p>
+                <p><strong>Impact/Results:</strong> <span id="modal-impact"></span></p>
+                <div id="modal-screenshots">
+                    <!-- Screenshots will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <div class="container">
             <p>&copy; 2025 Anisur Rahman Shaikot. All rights reserved. |
@@ -1151,6 +1262,50 @@
 
         document.querySelectorAll('.skill-card, .project-card').forEach(card => {
             observer.observe(card);
+        });
+
+        // Project Modal Logic
+        const projectModal = document.getElementById('project-modal');
+        const closeButton = document.querySelector('.close-button');
+        const modalTitle = document.getElementById('modal-title');
+        const modalProblem = document.getElementById('modal-problem');
+        const modalRole = document.getElementById('modal-role');
+        const modalSolution = document.getElementById('modal-solution');
+        const modalTech = document.getElementById('modal-tech');
+        const modalImpact = document.getElementById('modal-impact');
+        const modalScreenshots = document.getElementById('modal-screenshots');
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('click', function() {
+                modalTitle.textContent = this.querySelector('h3').textContent;
+                modalProblem.textContent = this.dataset.problem || 'N/A';
+                modalRole.textContent = this.dataset.role || 'N/A';
+                modalSolution.textContent = this.dataset.solution || 'N/A';
+                modalTech.textContent = this.dataset.technologies || 'N/A';
+                modalImpact.textContent = this.dataset.impact || 'N/A';
+
+                // Clear previous screenshots
+                modalScreenshots.innerHTML = '';
+                const screenshots = (this.dataset.screenshots || '').split(',').filter(s => s.trim() !== '');
+                screenshots.forEach(src => {
+                    const img = document.createElement('img');
+                    img.src = src.trim();
+                    img.alt = 'Project Screenshot';
+                    modalScreenshots.appendChild(img);
+                });
+
+                projectModal.style.display = 'block';
+            });
+        });
+
+        closeButton.addEventListener('click', function() {
+            projectModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target == projectModal) {
+                projectModal.style.display = 'none';
+            }
         });
     </script>
 </body>
