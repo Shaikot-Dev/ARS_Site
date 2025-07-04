@@ -12,6 +12,10 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            height: 100%;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
@@ -72,6 +76,8 @@
             align-items: center;
             position: relative;
             overflow: hidden;
+            background: transparent; /* Make hero background transparent */
+            z-index: 1; /* Ensure hero section is above the animated background */
         }
 
         .hero::before {
@@ -85,6 +91,36 @@
                 radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(255, 0, 150, 0.1) 0%, transparent 50%);
             z-index: -1;
+        }
+
+        .animated-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -3; /* Place behind all content, including hero::before */
+        }
+
+        .icon-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .icon-grid i {
+            font-size: 5rem; /* Increased for visibility */
+            color: rgba(0, 212, 255, 0.5); /* Increased opacity for visibility */
+            position: absolute;
+            animation: icon-move linear infinite;
+            opacity: 1; /* Fully visible for testing */
+        }
+
+        @keyframes icon-move {
+            0% { transform: translateY(-100%) translateX(var(--start-x)) rotate(0deg); }
+            100% { transform: translateY(100vh) translateX(var(--end-x)) rotate(360deg); }
         }
 
         .hero-content {
@@ -922,6 +958,9 @@
     </style>
 </head>
 <body>
+    <div class="animated-background">
+        <div class="icon-grid"></div>
+    </div>
     <header>
         <nav class="container">
             <div class="logo">ARS</div>
@@ -1511,6 +1550,48 @@
                 lightboxModal.style.display = 'none';
             }
         });
+
+        // Animated background icons
+        const iconGrid = document.querySelector('.icon-grid');
+        console.log('iconGrid element:', iconGrid);
+        const icons = [
+            'fas fa-server', 'fas fa-network-wired', 'fas fa-database', 'fas fa-cloud',
+            'fas fa-shield-alt', 'fas fa-cogs', 'fas fa-laptop-code', 'fas fa-microchip',
+            'fas fa-ethernet', 'fas fa-hdd', 'fas fa-memory', 'fas fa-power-off',
+            'fas fa-terminal', 'fas fa-code-branch', 'fas fa-bug', 'fas fa-robot'
+        ];
+
+        function createIcon() {
+            const icon = document.createElement('i');
+            icon.className = icons[Math.floor(Math.random() * icons.length)];
+            
+            const startX = Math.random() * window.innerWidth;
+            const endX = Math.random() * window.innerWidth;
+
+            icon.style.setProperty('--start-x', `${startX}px`);
+            icon.style.setProperty('--end-x', `${endX}px`);
+            icon.style.left = `${startX}px`; // Set initial left
+            icon.style.animationDuration = `${Math.random() * 10 + 10}s`; // 10-20 seconds
+            icon.style.animationDelay = `${Math.random() * 5}s`; // 0-5 seconds delay
+            icon.style.fontSize = `${Math.random() * 2 + 1}rem`; // 1-3rem
+
+            iconGrid.appendChild(icon);
+            console.log('Icon created and appended:', icon);
+
+            // Remove icon after it goes out of view to prevent DOM bloat
+            icon.addEventListener('animationend', () => {
+                icon.remove();
+                console.log('Icon removed:', icon);
+            });
+        }
+
+        // Create initial icons
+        for (let i = 0; i < 20; i++) {
+            createIcon();
+        }
+
+        // Continuously add new icons
+        setInterval(createIcon, 1000);
     </script>
 </body>
 </html>
