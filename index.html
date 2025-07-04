@@ -87,36 +87,6 @@
             z-index: -1;
         }
 
-        .animated-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -3; /* Place behind all content, including hero::before */
-        }
-
-        .icon-grid {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .icon-grid i {
-            font-size: 5rem; /* Increased for visibility */
-            color: rgba(0, 212, 255, 0.5); /* Increased opacity for visibility */
-            position: absolute;
-            animation: icon-move linear infinite;
-            opacity: 1; /* Fully visible for testing */
-        }
-
-        @keyframes icon-move {
-            0% { transform: translateY(-100%) translateX(var(--start-x)) rotate(0deg); }
-            100% { transform: translateY(100vh) translateX(var(--end-x)) rotate(360deg); }
-        }
-
         .hero-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
