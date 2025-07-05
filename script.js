@@ -34,40 +34,45 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add scroll effect to header
     window.addEventListener('scroll', () => {
         const header = document.querySelector('header');
-        if (window.scrollY > 100) {
+        if (window.scrollY > 50) { // Trigger earlier for smoother effect
             header.style.background = 'rgba(15, 20, 25, 0.98)';
         } else {
             header.style.background = 'rgba(15, 20, 25, 0.95)';
         }
     });
 
-    // Animate skill cards on scroll
+    // Animate elements on scroll using IntersectionObserver for performance
     const observerOptions = {
         threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
+        rootMargin: '0px 0px -50px 0px' // Start animation a bit sooner
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // Add fade-in animation
                 entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+
+                // If it's a skill card, also animate the bar
+                if (entry.target.classList.contains('skill-card')) {
+                    const proficiency = entry.target.dataset.proficiency;
+                    const skillBar = entry.target.querySelector('.skill-bar');
+                    const skillPercentage = entry.target.querySelector('.skill-percentage');
+                    
+                    if (skillBar) {
+                        skillBar.style.width = proficiency + '%';
+                        skillPercentage.textContent = proficiency + '%';
+                    }
+                }
+                
+                // Stop observing the element after it has been animated
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    document.querySelectorAll('.skill-card, .project-card, section').forEach(card => {
-        observer.observe(card);
-    });
-
-    // Skill Bar Animation
-    document.querySelectorAll('.skill-card').forEach(skillCard => {
-        const proficiency = skillCard.dataset.proficiency;
-        const skillBar = skillCard.querySelector('.skill-bar');
-        const skillPercentage = skillCard.querySelector('.skill-percentage');
-
-        // Animate the bar width
-        skillBar.style.width = proficiency + '%';
-        skillPercentage.textContent = proficiency + '%';
+    document.querySelectorAll('.skill-card, .project-card, .testimonial-card, .education-item').forEach(element => {
+        observer.observe(element);
     });
 
     // Project Modal Logic
@@ -90,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
             modalTech.textContent = this.dataset.technologies || 'N/A';
             modalImpact.textContent = this.dataset.impact || 'N/A';
 
-            // Clear previous screenshots
             modalScreenshots.innerHTML = '';
             const screenshots = (this.dataset.screenshots || '').split(',').filter(s => s.trim() !== '');
             if (screenshots.length > 0) {
@@ -114,12 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
             projectModal.style.display = 'none';
         });
     }
-
-    window.addEventListener('click', function(event) {
-        if (event.target == projectModal) {
-            projectModal.style.display = 'none';
-        }
-    });
 
     // Lightbox Logic
     const lightboxModal = document.getElementById('lightbox-modal');
@@ -147,55 +145,53 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    lightboxModal.addEventListener('click', function(event) {
+    // Close modals on outside click
+    window.addEventListener('click', function(event) {
+        if (event.target == projectModal) {
+            projectModal.style.display = 'none';
+        }
         if (event.target == lightboxModal) {
             lightboxModal.style.display = 'none';
         }
+        if (event.target == statusModal) {
+            statusModal.style.display = 'none';
+        }
     });
 
-    // Animated Background for Hero Section
+    // Optimized Animated Background for Hero Section
     const animatedBackground = document.querySelector('.animated-background');
     if (animatedBackground) {
         const icons = [
-            'fas fa-router',
-            'fas fa-ethernet',
-            'fas fa-server',
-            'fas fa-desktop',
-            'fas fa-firewall',
-            'fas fa-laptop',
-            'fas fa-hdd',
-            'fas fa-microchip',
-            'fas fa-cloud',
-            'fas fa-database'
+            'fas fa-router', 'fas fa-ethernet', 'fas fa-server', 'fas fa-desktop',
+            'fas fa-firewall', 'fas fa-laptop', 'fas fa-hdd', 'fas fa-microchip',
+            'fas fa-cloud', 'fas fa-database'
         ];
 
         function createAnimatedIcon() {
             const iconElement = document.createElement('i');
             iconElement.className = icons[Math.floor(Math.random() * icons.length)];
             
-            const size = Math.random() * 20 + 20; // Size between 20px and 40px
+            const size = Math.random() * 15 + 15; // Size between 15px and 30px
             iconElement.style.fontSize = size + 'px';
             iconElement.style.left = Math.random() * 100 + '%';
             iconElement.style.top = Math.random() * 100 + '%';
-            iconElement.style.animationDuration = Math.random() * 10 + 10 + 's'; // 10-20s
-            iconElement.style.animationDelay = Math.random() * 5 + 's'; // 0-5s delay
-            iconElement.style.opacity = 0; // Start invisible
+            iconElement.style.animationDuration = Math.random() * 10 + 15 + 's'; // 15-25s
+            iconElement.style.animationDelay = Math.random() * 5 + 's';
 
             animatedBackground.appendChild(iconElement);
 
-            // Remove icon after animation to prevent DOM bloat
             iconElement.addEventListener('animationend', () => {
                 iconElement.remove();
             });
         }
 
-        // Create initial icons
-        for (let i = 0; i < 30; i++) {
+        // Create a smaller number of initial icons
+        for (let i = 0; i < 10; i++) {
             createAnimatedIcon();
         }
 
-        // Continuously add new icons
-        setInterval(createAnimatedIcon, 1000); // Add a new icon every 1 second
+        // Add new icons less frequently
+        setInterval(createAnimatedIcon, 4000); // Add a new icon every 4 seconds
     }
 
     // Contact Form Submission
@@ -223,20 +219,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     contactForm.reset();
                 } else {
                     response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            statusModalTitle.textContent = 'Error!';
-                            statusModalMessage.textContent = data["errors"].map(error => error["message"]).join(", ");
-                            statusModal.style.display = 'flex';
-                        } else {
-                            statusModalTitle.textContent = 'Error!';
-                            statusModalMessage.textContent = 'Oops! There was a problem submitting your form';
-                            statusModal.style.display = 'flex';
-                        }
+                        statusModalTitle.textContent = 'Error!';
+                        statusModalMessage.textContent = data.errors ? data.errors.map(e => e.message).join(', ') : 'Oops! There was a problem.';
+                        statusModal.style.display = 'flex';
                     })
                 }
             }).catch(error => {
                 statusModalTitle.textContent = 'Error!';
-                statusModalMessage.textContent = 'Oops! There was a problem submitting your form';
+                statusModalMessage.textContent = 'Oops! There was a problem submitting your form.';
                 statusModal.style.display = 'flex';
             });
         });
@@ -247,10 +237,4 @@ document.addEventListener('DOMContentLoaded', () => {
             statusModal.style.display = 'none';
         });
     }
-
-    window.addEventListener('click', function(event) {
-        if (event.target == statusModal) {
-            statusModal.style.display = 'none';
-        }
-    });
 });

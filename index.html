@@ -385,10 +385,12 @@
 
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Contact Information</h2>
-            <p>Ready to discuss virtualization, networking, or system engineering opportunities.</p>
-            <div class="contact-grid">
-                <div class="contact-links">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Ready to discuss virtualization, networking, or system engineering opportunities? Send me a message!</p>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>Feel free to reach out via phone, email, or social media.</p>
                     <a href="tel:+8801621306991" class="contact-link">
                         <span><i class="fas fa-phone"></i></span>
                         <span>+8801621306991</span>
@@ -406,23 +408,16 @@
                         <span>LinkedIn Profile</span>
                     </a>
                 </div>
-                <div class="contact-address">
-                    <div class="address-item">
-                        <span><i class="fas fa-home"></i></span>
-                        <span>263/1 Helal Market, Uttar Khan, Dhaka-1230, Bangladesh</span>
-                    </div>
+                <div class="contact-form">
+                    <h3>Send a Message</h3>
+                    <form id="contact-form" action="https://formspree.io/f/mjkrdgod" method="POST">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <input type="text" name="subject" placeholder="Subject" required>
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        <button type="submit" class="cta-button primary">Send Message</button>
+                    </form>
                 </div>
-            </div>
-            
-            <div class="contact-form">
-                <h3>Send a Message</h3>
-                <form id="contact-form" action="https://formspree.io/f/mjkrdgod" method="POST">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <input type="text" name="subject" placeholder="Subject" required>
-                    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-                    <button type="submit" class="cta-button primary">Send Message</button>
-                </form>
             </div>
 
             <!-- Submission Status Modal -->
@@ -448,7 +443,6 @@
                 </div>
             </div>
         </div>
-                    </div>
     </section>
 
     <div id="project-modal" class="modal">

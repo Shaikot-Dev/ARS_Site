@@ -9,6 +9,9 @@
             background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
             color: #e8eaed;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .container {
@@ -640,23 +643,73 @@
             text-align: center;
         }
 
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #b0b3b8;
+            margin-bottom: 3rem;
         }
 
-        .contact-form {
-            margin-top: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr; /* Info on left, form on right */
+            gap: 3rem;
+            align-items: flex-start;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .contact-info {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             padding: 2rem;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-info h3 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-info p {
+            color: #b0b3b8;
+            line-height: 1.6;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #e8eaed;
+            text-decoration: none;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-link:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: #00d4ff;
+            color: #00d4ff;
+            transform: translateX(5px);
+        }
+
+        .contact-link span:first-child {
+            font-size: 1.5rem;
+            color: #ff0096;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: left;
         }
 
         .contact-form h3 {
@@ -697,55 +750,34 @@
 
         .contact-form button {
             width: auto;
-            align-self: center;
+            align-self: flex-start;
             margin-top: 1rem;
         }
 
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #e8eaed;
-            text-decoration: none;
-            padding: 1rem 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            transition: all 0.3s ease;
+        @media (max-width: 1024px) {
+            .contact-wrapper {
+                grid-template-columns: 1fr; /* Stack columns on smaller screens */
+            }
+            .contact-form button {
+                align-self: center;
+            }
         }
 
-        .contact-link:hover {
-            background: rgba(0, 212, 255, 0.1);
-            border-color: #00d4ff;
-            color: #00d4ff;
-        }
-
-        .contact-address {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.8rem;
-            font-size: 1.1rem;
-            color: #e8eaed;
-        }
-
+        /* References Section */
         .references {
             margin-top: 3rem;
             padding: 2rem;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 15px;
-            text-align: center;
+            text-align: left; /* Align text to left */
         }
 
         .references h3 {
             color: #00d4ff;
             margin-bottom: 1.5rem;
             font-size: 1.8rem;
+            text-align: center; /* Keep heading centered */
         }
 
         .reference-list {
@@ -824,11 +856,27 @@
             text-align: center;
             padding: 2rem 0;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 3rem;
+            margin-top: auto; /* Pushes footer to the bottom */
+            display: flex; /* Use flexbox for footer content */
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap; /* Allow content to wrap */
+            gap: 1rem; /* Space between items */
         }
 
         footer p {
             font-size: 0.9rem;
+            margin: 0; /* Remove default margin */
+        }
+
+        footer a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #00d4ff;
         }
 
         /* Modal Styles */
