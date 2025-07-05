@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The portfolio of Anisur Rahman Shaikot, a System Engineer specializing in VMware, Nutanix, and enterprise networking.">
     <title>Anisur Rahman Shaikot - System Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -304,8 +305,7 @@
                     data-role="Lead System Engineer, responsible for end-to-end solution design, deployment, and post-implementation support."
                     data-solution="Implemented VMware Cloud Foundation (VCF) to create a robust, scalable, and secure private cloud environment. Utilized NSX for micro-segmentation to enhance security and VMware SRM for automated disaster recovery, ensuring business continuity."
                     data-technologies="VMware vSphere, vSAN, NSX-T, SRM, VCF"
-                    data-impact="Achieved 99.99% uptime for critical banking applications, reduced recovery time objective (RTO) by 80%, and improved network security posture through granular micro-segmentation."
-                    data-screenshots="images/nagad-vcf-1.png, images/nagad-vcf-2.png">
+                    data-impact="Achieved 99.99% uptime for critical banking applications, reduced recovery time objective (RTO) by 80%, and improved network security posture through granular micro-segmentation.">
                     <div class="project-tag">VMware VCF</div>
                     <div class="project-tag">NSX</div>
                     <div class="project-tag">SRM</div>
@@ -317,8 +317,7 @@
                     data-role="System Engineer, responsible for deployment, configuration, data migration, and training."
                     data-solution="Deployed Nutanix AHV hyperconverged infrastructure, consolidating compute, storage, and networking into a single, unified platform. Managed complex workload migration from legacy systems and implemented comprehensive data protection strategies."
                     data-technologies="Nutanix AHV, Prism Element, Prism Central, Nutanix Move, Nutanix Files"
-                    data-impact="Reduced operational overhead by 40%, improved application performance by 25%, and provided a highly available and resilient infrastructure for critical banking operations. Successfully trained the internal IT team on Nutanix platform management."
-                    data-screenshots="images/midland-nutanix-1.png, images/midland-nutanix-2.png">
+                    data-impact="Reduced operational overhead by 40%, improved application performance by 25%, and provided a highly available and resilient infrastructure for critical banking operations. Successfully trained the internal IT team on Nutanix platform management.">
                     <div class="project-tag">Nutanix AHV</div>
                     <div class="project-tag">HCI</div>
                     <div class="project-tag">Migration</div>
@@ -334,22 +333,22 @@
             <h2 class="section-title">Image Gallery</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="images/gallery-placeholder-1.jpg" alt="Gallery Image 1">
+                    <img src="images/my_image.jpg" alt="Anisur Rahman Shaikot">
                 </div>
                 <div class="gallery-item">
-                    <img src="images/gallery-placeholder-2.jpg" alt="Gallery Image 2">
+                    <img src="images/gallery-placeholder-1.jpg" alt="Anisur Rahman Shaikot working on a server rack">
                 </div>
                 <div class="gallery-item">
-                    <img src="images/gallery-placeholder-3.jpg" alt="Gallery Image 3">
+                    <img src="images/gallery-placeholder-2.jpg" alt="A network diagram designed by Anisur Rahman Shaikot">
                 </div>
                 <div class="gallery-item">
-                    <img src="images/gallery-placeholder-4.jpg" alt="Gallery Image 4">
+                    <img src="images/my_image.jpg" alt="Anisur Rahman Shaikot">
                 </div>
                 <div class="gallery-item">
-                    <img src="images/gallery-placeholder-5.jpg" alt="Gallery Image 5">
+                    <img src="images/gallery-placeholder-1.jpg" alt="Anisur Rahman Shaikot working on a server rack">
                 </div>
                 <div class="gallery-item">
-                    <img src="images/gallery-placeholder-6.jpg" alt="Gallery Image 6">
+                    <img src="images/gallery-placeholder-2.jpg" alt="A network diagram designed by Anisur Rahman Shaikot">
                 </div>
             </div>
         </div>
@@ -417,13 +416,22 @@
             
             <div class="contact-form">
                 <h3>Send a Message</h3>
-                <form action="mailto:Shaikot676@gmail.com" method="post" enctype="text/plain">
+                <form id="contact-form" action="https://formspree.io/f/mjkrdgod" method="POST">
                     <input type="text" name="name" placeholder="Your Name" required>
                     <input type="email" name="email" placeholder="Your Email" required>
                     <input type="text" name="subject" placeholder="Subject" required>
                     <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
                     <button type="submit" class="cta-button primary">Send Message</button>
                 </form>
+            </div>
+
+            <!-- Submission Status Modal -->
+            <div id="status-modal" class="modal modal-centered">
+                <div class="modal-content">
+                    <span class="close-button status-close">&times;</span>
+                    <h2 id="status-modal-title"></h2>
+                    <p id="status-modal-message"></p>
+                </div>
             </div>
 
             <div class="references">

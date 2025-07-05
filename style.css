@@ -987,6 +987,32 @@
             display: block; /* Show the button when the 'show' class is added */
         }
 
+.modal-centered {
+    justify-content: center;
+    align-items: center;
+    padding-top: 0;
+}
+
+.modal-centered .modal-content {
+    margin: 0;
+}
+
+/* Status Modal Styles */
+#status-modal .modal-content {
+    max-width: 500px;
+    text-align: center;
+}
+
+#status-modal-title {
+    color: #00d4ff;
+    margin-bottom: 1rem;
+}
+
+#status-modal-message {
+    color: #e8eaed;
+    font-size: 1.1rem;
+}
+
 /* Blog Page Specific Styles */
 .blog-section {
     padding: 5rem 0;

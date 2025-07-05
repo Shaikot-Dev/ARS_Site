@@ -93,12 +93,17 @@ document.addEventListener('DOMContentLoaded', () => {
             // Clear previous screenshots
             modalScreenshots.innerHTML = '';
             const screenshots = (this.dataset.screenshots || '').split(',').filter(s => s.trim() !== '');
-            screenshots.forEach(src => {
-                const img = document.createElement('img');
-                img.src = src.trim();
-                img.alt = 'Project Screenshot';
-                modalScreenshots.appendChild(img);
-            });
+            if (screenshots.length > 0) {
+                screenshots.forEach(src => {
+                    const img = document.createElement('img');
+                    img.src = src.trim();
+                    img.alt = 'Project Screenshot';
+                    modalScreenshots.appendChild(img);
+                });
+                modalScreenshots.style.display = 'grid';
+            } else {
+                modalScreenshots.style.display = 'none';
+            }
 
             projectModal.style.display = 'block';
         });
@@ -192,4 +197,60 @@ document.addEventListener('DOMContentLoaded', () => {
         // Continuously add new icons
         setInterval(createAnimatedIcon, 1000); // Add a new icon every 1 second
     }
+
+    // Contact Form Submission
+    const contactForm = document.getElementById('contact-form');
+    const statusModal = document.getElementById('status-modal');
+    const statusModalTitle = document.getElementById('status-modal-title');
+    const statusModalMessage = document.getElementById('status-modal-message');
+    const statusCloseButton = document.querySelector('.status-close');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    statusModalTitle.textContent = 'Success!';
+                    statusModalMessage.textContent = 'Thanks for your submission!';
+                    statusModal.style.display = 'flex';
+                    contactForm.reset();
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            statusModalTitle.textContent = 'Error!';
+                            statusModalMessage.textContent = data["errors"].map(error => error["message"]).join(", ");
+                            statusModal.style.display = 'flex';
+                        } else {
+                            statusModalTitle.textContent = 'Error!';
+                            statusModalMessage.textContent = 'Oops! There was a problem submitting your form';
+                            statusModal.style.display = 'flex';
+                        }
+                    })
+                }
+            }).catch(error => {
+                statusModalTitle.textContent = 'Error!';
+                statusModalMessage.textContent = 'Oops! There was a problem submitting your form';
+                statusModal.style.display = 'flex';
+            });
+        });
+    }
+
+    if (statusCloseButton) {
+        statusCloseButton.addEventListener('click', function() {
+            statusModal.style.display = 'none';
+        });
+    }
+
+    window.addEventListener('click', function(event) {
+        if (event.target == statusModal) {
+            statusModal.style.display = 'none';
+        }
+    });
 });
