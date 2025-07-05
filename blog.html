@@ -5,132 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anisur Rahman Shaikot - Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="index.html"> <!-- Link to your main CSS -->
-    <style>
-        /* Basic Blog Page Styles - will be integrated into main CSS or a new file */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
-            color: #e8eaed;
-            overflow-x: hidden;
-            padding-top: 80px; /* Space for fixed header */
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header - Reusing styles from index.html */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(15, 20, 25, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #00d4ff;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #e8eaed;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #00d4ff;
-        }
-
-        /* Blog Content */
-        .blog-section {
-            padding: 5rem 0;
-        }
-
-        .blog-posts {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .blog-post-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .blog-post-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
-        }
-
-        .blog-post-card h3 {
-            color: #00d4ff;
-            margin-bottom: 0.8rem;
-            font-size: 1.5rem;
-        }
-
-        .blog-post-card .post-meta {
-            font-size: 0.9rem;
-            color: #b0b3b8;
-            margin-bottom: 1rem;
-        }
-
-        .blog-post-card p {
-            color: #e8eaed;
-            line-height: 1.6;
-        }
-
-        .blog-post-card a {
-            display: inline-block;
-            margin-top: 1rem;
-            color: #ff0096;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .blog-post-card a:hover {
-            color: #00d4ff;
-        }
-
-        /* Footer - Reusing styles from index.html */
-        footer {
-            background: #0f1419;
-            color: #b0b3b8;
-            text-align: center;
-            padding: 2rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 3rem;
-        }
-
-        footer p {
-            font-size: 0.9rem;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your main CSS -->
 </head>
 <body>
     <header>
@@ -150,6 +25,9 @@
                 <li><a href="https://www.linkedin.com/in/5haikot/" target="_blank">LinkedIn</a></li>
                 <li><a href="blog.html">Blog</a></li>
             </ul>
+            <div class="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
         </nav>
     </header>
 

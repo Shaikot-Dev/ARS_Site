@@ -986,3 +986,132 @@
         #back-to-top.show {
             display: block; /* Show the button when the 'show' class is added */
         }
+
+/* Blog Page Specific Styles */
+.blog-section {
+    padding: 5rem 0;
+    padding-top: 120px; /* Add padding to clear the fixed header */
+}
+
+.blog-posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.blog-post-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.blog-post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+}
+
+.blog-post-card h3 {
+    color: #00d4ff;
+    margin-bottom: 0.8rem;
+    font-size: 1.5rem;
+}
+
+.blog-post-card .post-meta {
+    font-size: 0.9rem;
+    color: #b0b3b8;
+    margin-bottom: 1rem;
+}
+
+.blog-post-card p {
+    color: #e8eaed;
+    line-height: 1.6;
+}
+
+.blog-post-card a {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #ff0096;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.blog-post-card a:hover {
+    color: #00d4ff;
+}
+
+/* Responsive Design */
+.menu-icon {
+    display: none; /* Hidden by default */
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+    .nav-links {
+        display: none; /* Hide links by default on smaller screens */
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: rgba(15, 20, 25, 0.98);
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex; /* Show when active */
+    }
+
+    .nav-links li {
+        padding: 1rem 0;
+    }
+
+    .menu-icon {
+        display: block; /* Show hamburger icon */
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-visual {
+        display: none; /* Optional: hide complex visuals on small screens */
+    }
+
+    .about-content {
+        flex-direction: column;
+    }
+
+    .experience-item {
+        grid-template-columns: 1fr;
+    }
+
+    .cert-categories {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-links {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .skills-grid,
+    .projects-grid,
+    .testimonials-grid,
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
