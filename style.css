@@ -44,6 +44,16 @@
             color: #00d4ff;
         }
 
+        .logo a {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px; /* Adjust as needed */
+            width: auto;
+        }
+
         .nav-links {
             display: flex;
             list-style: none;
