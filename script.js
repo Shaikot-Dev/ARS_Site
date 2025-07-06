@@ -238,3 +238,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+let slideIndex = 1;
+let slideInterval;
+
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("slide");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slides[slideIndex-1].style.display = "block";
+  
+  // Reset timer
+  clearInterval(slideInterval);
+  slideInterval = setInterval(() => plusSlides(1), 3000);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // ... (rest of the DOMContentLoaded event listener)
+
+    // Slideshow controls
+    const prevButton = document.querySelector(".prev");
+    const nextButton = document.querySelector(".next");
+
+    if(prevButton && nextButton){
+        prevButton.addEventListener("click", () => plusSlides(-1));
+        nextButton.addEventListener("click", () => plusSlides(1));
+    }
+});
