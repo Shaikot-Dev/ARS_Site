@@ -302,30 +302,38 @@
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
-                <div class="project-card"
-                    data-problem="Designed and implemented VMware Cloud Foundation deployment with NSX micro-segmentation, successful workload migration, and VMware SRM disaster recovery solution for Bangladesh's leading mobile banking platform."
-                    data-role="Lead System Engineer, responsible for end-to-end solution design, deployment, and post-implementation support."
-                    data-solution="Implemented VMware Cloud Foundation (VCF) to create a robust, scalable, and secure private cloud environment. Utilized NSX for micro-segmentation to enhance security and VMware SRM for automated disaster recovery, ensuring business continuity."
-                    data-technologies="VMware vSphere, vSAN, NSX-T, SRM, VCF"
-                    data-impact="Achieved 99.99% uptime for critical banking applications, reduced recovery time objective (RTO) by 80%, and improved network security posture through granular micro-segmentation.">
-                    <div class="project-tag">VMware VCF</div>
-                    <div class="project-tag">NSX</div>
-                    <div class="project-tag">SRM</div>
-                    <h3>VCF Design and Implementation for Nagad Mobile Banking</h3>
-                    <p>Designed and implemented VMware Cloud Foundation deployment with NSX micro-segmentation, successful workload migration, and VMware SRM disaster recovery solution for Bangladesh's leading mobile banking platform.</p>
-                </div>
-                <div class="project-card"
-                    data-problem="Midland Bank PLC required a robust, scalable, and easy-to-manage hyperconverged infrastructure solution to replace their aging IT systems and support future growth."
-                    data-role="System Engineer, responsible for deployment, configuration, data migration, and training."
-                    data-solution="Deployed Nutanix AHV hyperconverged infrastructure, consolidating compute, storage, and networking into a single, unified platform. Managed complex workload migration from legacy systems and implemented comprehensive data protection strategies."
-                    data-technologies="Nutanix AHV, Prism Element, Prism Central, Nutanix Move, Nutanix Files"
-                    data-impact="Reduced operational overhead by 40%, improved application performance by 25%, and provided a highly available and resilient infrastructure for critical banking operations. Successfully trained the internal IT team on Nutanix platform management.">
-                    <div class="project-tag">Nutanix AHV</div>
-                    <div class="project-tag">HCI</div>
-                    <div class="project-tag">Migration</div>
-                    <h3>Nutanix HCI Solution for Midland Bank PLC</h3>
-                    <p>Successfully deployed Nutanix AHV hyperconverged infrastructure, managed complex workload migration, implemented comprehensive data protection and backup strategies, and provided extensive IT team training.</p>
-                </div>
+                <a href="project-nagad.html" class="project-card-link">
+                    <div class="project-card">
+                        <div class="project-card-content">
+                            <div class="project-tags">
+                                <div class="project-tag">VMware VCF</div>
+                                <div class="project-tag">NSX</div>
+                                <div class="project-tag">SRM</div>
+                            </div>
+                            <h3>VCF Design and Implementation for Nagad Mobile Banking</h3>
+                            <p>Designed and implemented VMware Cloud Foundation deployment with NSX micro-segmentation, successful workload migration, and VMware SRM disaster recovery solution for Bangladesh's leading mobile banking platform.</p>
+                        </div>
+                        <div class="project-card-footer">
+                            <span class="cta-button secondary">Read More</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="project-midland.html" class="project-card-link">
+                    <div class="project-card">
+                        <div class="project-card-content">
+                            <div class="project-tags">
+                                <div class="project-tag">Nutanix AHV</div>
+                                <div class="project-tag">HCI</div>
+                                <div class="project-tag">Migration</div>
+                            </div>
+                            <h3>Nutanix HCI Solution for Midland Bank PLC</h3>
+                            <p>Successfully deployed Nutanix AHV hyperconverged infrastructure, managed complex workload migration, implemented comprehensive data protection and backup strategies, and provided extensive IT team training.</p>
+                        </div>
+                        <div class="project-card-footer">
+                            <span class="cta-button secondary">Read More</span>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -442,22 +450,7 @@
         </div>
     </section>
 
-    <div id="project-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2 id="modal-title"></h2>
-            <div class="modal-body">
-                <p><strong>Problem:</strong> <span id="modal-problem"></span></p>
-                <p><strong>My Role:</strong> <span id="modal-role"></span></p>
-                <p><strong>Solution:</strong> <span id="modal-solution"></span></p>
-                <p><strong>Technologies Used:</strong> <span id="modal-tech"></span></p>
-                <p><strong>Impact/Results:</strong> <span id="modal-impact"></span></p>
-                <div id="modal-screenshots">
-                    <!-- Screenshots will be dynamically added here -->
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
     <div id="lightbox-modal" class="lightbox-modal">
         <span class="lightbox-close">&times;</span>

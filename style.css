@@ -556,12 +556,38 @@
             padding: 2rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Ensure cards have the same height */
+        }
+
+        .project-card h3 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            font-size: 1.4rem;
+        }
+
+        .project-card p {
+            color: #b0b3b8;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .project-card-footer {
+            margin-top: auto; /* Push footer to the bottom */
+            padding-top: 1.5rem; /* Add some space above the button */
+            text-align: center;
         }
 
         .project-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 40px rgba(255, 0, 150, 0.2);
-            cursor: pointer;
+        }
+
+        .project-card-link {
+            text-decoration: none;
+            color: inherit;
         }
 
         .project-tag {
@@ -1236,4 +1262,59 @@
     .gallery-grid {
         grid-template-columns: 1fr;
     }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Project Detail Page Specific Styles */
+.project-detail-section {
+    padding: 5rem 0;
+    padding-top: 120px; /* Add padding to clear the fixed header */
+}
+
+.project-detail-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.project-detail-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.project-detail-card h3 {
+    color: #00d4ff;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.project-detail-card p {
+    color: #e8eaed;
+    line-height: 1.6;
+}
+
+.project-gallery {
+    margin-bottom: 3rem;
+    /* Styles for project images, e.g., grid layout */
+}
+
+.back-to-projects {
+    text-align: center;
 }
